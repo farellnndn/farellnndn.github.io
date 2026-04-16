@@ -1,0 +1,50 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="24" fill="#EBF3FF"/>
+
+  <!-- Blueprint guide lines -->
+  <line x1="100" y1="10"  x2="100" y2="190" stroke="#D6E9FF" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="10"  y1="112" x2="190" y2="112" stroke="#D6E9FF" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Water waves -->
+  <path d="M 10,142 Q 30,136 50,142 Q 70,148 90,142 Q 110,136 130,142 Q 150,148 170,142 Q 185,138 192,140"
+        fill="none" stroke="#B3D1FF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 10,155 Q 28,149 48,155 Q 68,161 88,155 Q 108,149 128,155 Q 148,161 168,155 Q 184,150 192,152"
+        fill="none" stroke="#D6E9FF" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Waterline -->
+  <line x1="10" y1="130" x2="190" y2="130"
+        stroke="#B3D1FF" stroke-width="1.4" stroke-dasharray="7,4" opacity="0.6"/>
+
+  <!-- Hull body -->
+  <path d="M 22,128 C 24,116 30,108 40,106 L 162,106 C 172,106 182,110 182,118 C 182,126 174,130 164,130 L 34,130 C 26,130 22,129 22,128 Z"
+        fill="#4D94FF" stroke="#0066FF" stroke-width="2.2"/>
+
+  <!-- Cabin superstructure -->
+  <path d="M 52,106 L 140,106 L 136,76 L 58,76 Z"
+        fill="#80B3FF" stroke="#0066FF" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Cabin window -->
+  <rect x="82" y="82" width="36" height="16" rx="5" fill="#E0EEFF" stroke="#B3D1FF" stroke-width="1.5"/>
+
+  <!-- Mast -->
+  <line x1="100" y1="76" x2="100" y2="44" stroke="#003EA6" stroke-width="2.8" stroke-linecap="round"/>
+  <circle cx="100" cy="42" r="7" fill="#0066FF" stroke="#003EA6" stroke-width="1.8"/>
+  <circle cx="100" cy="42" r="3" fill="#E0EEFF" opacity="0.8"/>
+
+  <!-- Signal waves from mast top -->
+  <path d="M 88,56 Q 100,51 112,56" fill="none" stroke="#80B3FF" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 83,64 Q 100,57 117,64" fill="none" stroke="#B3D1FF" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Propeller at stern (left end of hull) -->
+  <circle cx="24" cy="120" r="12" fill="#B3D1FF" stroke="#4D94FF" stroke-width="2"/>
+  <line x1="24" y1="108" x2="24" y2="132" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="12"  y1="120" x2="36" y2="120" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Technical measurement bar -->
+  <line x1="40"  y1="174" x2="160" y2="174" stroke="#80B3FF" stroke-width="1.5"/>
+  <line x1="40"  y1="169" x2="40"  y2="179" stroke="#80B3FF" stroke-width="1.5"/>
+  <line x1="160" y1="169" x2="160" y2="179" stroke="#80B3FF" stroke-width="1.5"/>
+  <line x1="98"  y1="174" x2="102" y2="174" stroke="#4D94FF" stroke-width="2"/>
+  <circle cx="100" cy="174" r="3.5" fill="#80B3FF"/>
+</svg>

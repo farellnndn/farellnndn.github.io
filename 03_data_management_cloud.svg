@@ -1,0 +1,40 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="24" fill="#EBF3FF"/>
+
+  <!-- Cloud shape -->
+  <path d="M 30,90 C 28,74 37,60 54,56 C 52,38 65,26 84,26 C 90,18 108,18 116,28 C 134,26 150,38 150,56 C 150,70 140,82 126,84 Z"
+        fill="#B3D1FF" stroke="#4D94FF" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Data dots inside cloud -->
+  <circle cx="62"  cy="58" r="5" fill="#4D94FF" opacity="0.7"/>
+  <circle cx="82"  cy="46" r="5" fill="#0066FF"  opacity="0.8"/>
+  <circle cx="104" cy="44" r="5" fill="#0066FF"  opacity="0.85"/>
+  <circle cx="124" cy="56" r="5" fill="#4D94FF"  opacity="0.7"/>
+
+  <!-- Connector line cloud to DB -->
+  <line x1="90" y1="84" x2="90" y2="108"
+        stroke="#4D94FF" stroke-width="2.5" stroke-dasharray="4,3" stroke-linecap="round"/>
+
+  <!-- DB top ellipse -->
+  <ellipse cx="90" cy="112" rx="42" ry="14" fill="#4D94FF" stroke="#0066FF" stroke-width="2"/>
+
+  <!-- DB body -->
+  <path d="M 48,112 L 48,154 C 48,162 67,168 90,168 C 113,168 132,162 132,154 L 132,112"
+        fill="#80B3FF" stroke="#0066FF" stroke-width="2"/>
+
+  <!-- DB mid stripe -->
+  <path d="M 48,133 C 48,141 67,147 90,147 C 113,147 132,141 132,133"
+        fill="none" stroke="#B3D1FF" stroke-width="1.8"/>
+
+  <!-- DB bottom ellipse -->
+  <ellipse cx="90" cy="154" rx="42" ry="14" fill="none" stroke="#0066FF" stroke-width="2"/>
+
+  <!-- Left side node -->
+  <circle cx="18" cy="138" r="11" fill="#E0EEFF" stroke="#80B3FF" stroke-width="2"/>
+  <line x1="29" y1="138" x2="48" y2="138" stroke="#80B3FF" stroke-width="2"/>
+
+  <!-- Right side node -->
+  <circle cx="162" cy="138" r="11" fill="#E0EEFF" stroke="#80B3FF" stroke-width="2"/>
+  <line x1="132" y1="138" x2="151" y2="138" stroke="#80B3FF" stroke-width="2"/>
+</svg>
