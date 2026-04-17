@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Farell Nandana Tahir — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sky: #c8e6f5;
+    --sky-mid: #a0d0ef;
+    --sky-dark: #6bb3e0;
+    --navy: #1a2d4a;
+    --navy-deep: #0f1e33;
+    --white: #ffffff;
+    --text: #1a2d4a;
+    --text-muted: #5a7090;
+    --accent: #2e7fc1;
+    --accent2: #f0a500;
+    --card-bg: rgba(255,255,255,0.85);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 50px; /* Memberi jarak aman agar tidak tertutup navbar */
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem 2rem;
+    background: rgba(200,230,245,0.75);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(110,179,224,0.2);
+    transition: background 0.3s;
+  }
+  nav ul { 
+    list-style: none; 
+    display: flex; 
+    align-items: center; 
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li { 
+    display: flex; 
+    align-items: center; 
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 1rem; /* Ukuran teks diperbesar dari 0.85rem */
+    font-weight: 600; /* Sedikit ditebalkan agar lebih jelas */
+    padding: 0.6rem 1.25rem; /* Ukuran background (pill) diperbesar */
+    border-radius: 99px;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav ul li a.active {
+    background: var(--navy); /* Menggunakan variabel warna navy yang sudah ada */
+    color: #fff;
+  }
+  nav ul li a:hover { 
+    background: var(--navy); 
+    color: #fff; 
+  }
+
+  nav ul li:not(:last-child)::after {
+    content: '|';
+    color: var(--sky-dark);
+    margin: 0 16px; /* Jarak garis ke teks diperlebar agar tidak sesak */
+    pointer-events: none;
+  }
+  /* ── HERO ── */
+#home {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #d8eef9 0%, #b8dcf0 50%, #c8e6f5 100%);
+  position: relative; overflow: hidden;
+  display: flex; 
+  align-items: center;
+  justify-content: center; /* ⬅️ Menarik teks dan foto ke tengah */
+  gap: 8rem; /* ⬅️ Mengatur jarak antara teks dan foto. Semakin kecil angkanya, semakin rapat */
+  padding: 7rem 8% 4rem;
+}
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'%3E%3Cpath d='M900 0 Q700 80 600 200 Q480 330 520 480 Q560 600 900 600Z' fill='rgba(255,255,255,0.18)'/%3E%3Cpath d='M900 0 Q750 60 700 180 Q640 320 700 500 Q740 580 900 600Z' fill='rgba(255,255,255,0.12)'/%3E%3C/svg%3E");
+    background-size: cover; background-position: right;
+  }
+
+  .hero-content { 
+    flex: none; /* ⬅️ Ubah dari 'flex: 1;' menjadi 'none' agar tidak mendorong foto menjauh */
+    position: relative; 
+    z-index: 2;
+  }
+  .hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .hero-content h1 span { color: var(--accent); }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem; /* ⬅️ ini yang kita ubah */
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+  .hero-subtitle span { color: var(--navy); font-weight: 600; }
+  .hero-subtitle .sep { color: var(--sky-dark); }
+  .hero-btns { 
+    display: flex; 
+    gap: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+.btn-primary,
+.btn-outline,
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.65rem 1.6rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover,
+.btn-outline:hover,
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46,127,193,0.35);
+}
+
+  .social-icons { 
+  display: flex; 
+  gap: 1rem; 
+  margin-top: -6px;
+}
+  .social-icons a {
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--white); border-radius: 50%;
+    color: var(--navy); font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .social-icons a:hover { transform: scale(1.15); background: var(--navy); color: #fff; }
+
+  .hero-photo {
+    flex: 0 0 320px; position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo-frame {
+    width: 280px; height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.8);
+    box-shadow: 0 20px 60px rgba(26,45,74,0.2);
+    background: #e0f0fb;
+    position: relative;
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .photo-deco {
+    position: absolute;
+    width: 340px; height: 380px;
+    border-radius: 28px;
+    border: 2px dashed rgba(110,179,224,0.5);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(4deg);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { 
+  /* Urutan: ATAS | KANAN & KIRI | BAWAH */
+  padding: 3rem 8% 5rem; 
+}
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+.section-title::after {
+  content: '';
+  display: block;
+  width: 325px !important; /* Ubah angka 140px menjadi lebih besar */
+  height: 3px;
+  background: var(--accent);
+  margin: 0.5rem auto;
+  border-radius: 99px;
+}
+  /* ── ABOUT ── */
+  #about { background: #f5fbff; }
+  .about-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+.about-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-align: center; /* ⬅️ ini saja yang ditambah */
+}
+  .about-inner p {
+    font-size: 1.25rem;
+    line-height: 1.85;
+    color: #3a5070;
+    margin-bottom: 1.1rem;
+    text-align: justify;
+  }
+.about-inner .about-quote {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  /* ── SKILL ── */
+  #skill { background: linear-gradient(180deg, #d4ecf7 0%, #b8dcf0 100%); }
+
+.skill-categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ⬅️ Ubah dari 3 kolom jadi 2 kolom */
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  max-width: 850px; /* ⬅️ Batasi lebar agar ukuran kotaknya tidak terlalu melar */
+  margin-left: auto; /* ⬅️ Bawa ke tengah (kiri) */
+  margin-right: auto; /* ⬅️ Bawa ke tengah (kanan) */
+}
+.skill-cat-wide { 
+  grid-column: 1 / -1; 
+  max-width: 650px; /* Membatasi lebar kotak putih */
+  margin: 0 auto; /* Membuat kotak posisinya ke tengah */
+}
+
+  .skill-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1rem; /* ⬅️ Ubah dari 1.5rem jadi 1rem agar kotaknya lebih kecil/rapat */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 4px 20px rgba(26,45,74,0.07);
+}
+
+.skill-card h3 {
+  font-size: 1.1rem; /* ⬅️ Naikkan dari 0.9rem ke 1.1rem untuk memperbesar huruf */
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.8rem; /* ⬅️ Kurangi dari 1.1rem agar jarak teks ke ikon tidak terlalu jauh */
+  text-align: center;
+}
+  .icon-grid {
+    display: flex; flex-wrap: wrap;
+    gap: 0.6rem; justify-content: center;
+  }
+  .icon-item {
+    width: 48px; height: 48px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .icon-item:hover { transform: scale(1.12); }
+  .icon-label { font-size: 0.45rem; color: var(--text-muted); margin-top: 1px; }
+
+  .skill-abilities {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .ability-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(26,45,74,0.1);
+    border: 1px solid rgba(255,255,255,0.8);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ability-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,45,74,0.15); }
+  .ability-icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
+.ability-card h4 { 
+  font-size: 1.15rem; /* ⬅️ Naikkan dari 0.82rem ke 1.05rem untuk judul */
+  font-weight: 700; 
+  color: var(--navy); 
+  margin-bottom: 0.6rem; 
+}
+
+.ability-card p { 
+  font-size: 1rem; /* ⬅️ Naikkan dari 0.75rem ke 0.9rem untuk deskripsi */
+  color: var(--text-muted); 
+  line-height: 1.65; 
+}
+
+  /* ── SERTIFIKAT ── */
+  #sertifikat { background: #f0f8ff; }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .cert-item {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+    background: #e8f4fd;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    border: 2px solid #d0e8f8;
+  }
+  .cert-item:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+  .cert-item img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ── PORTOFOLIO ── */
+  #portfolio {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    position: relative; overflow: hidden;
+  }
+  #portfolio::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(46,127,193,0.12);
+    pointer-events: none;
+  }
+  #portfolio .section-title { color: #fff; }
+  #portfolio .section-title::after { background: var(--sky-mid); }
+
+  .portfolio-grid { display: flex; flex-direction: column; gap: 2rem; }
+
+  .portfolio-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .portfolio-item:hover { transform: translateY(-4px); border-color: rgba(107,179,224,0.4); }
+
+  .portfolio-title-bar {
+    padding: 1rem 1.5rem 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .portfolio-title-bar span {
+    width: 10px; height: 10px; border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .portfolio-title-bar h3 { font-size: 0.9rem; font-weight: 600; color: #a8d8f0; margin-left: 0.5rem; }
+
+  .portfolio-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    padding: 0 1.5rem 1.5rem;
+  }
+  .portfolio-img {
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(46,127,193,0.15);
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    color: rgba(168,216,240,0.5);
+  }
+  .portfolio-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-deep);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+  }
+  footer p { margin-bottom: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+  .footer-social { display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1rem; }
+  .footer-social a {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none; font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .footer-social a:hover { background: var(--accent); color: #fff; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #home { flex-direction: column; text-align: center; padding-top: 8rem; }
+    .hero-photo { flex: none; margin-top: 2rem; }
+    .hero-btns, .social-icons { justify-content: center; }
+    .skill-categories { grid-template-columns: 1fr; }
+    .skill-cat-wide { grid-column: auto; }
+    .skill-abilities { grid-template-columns: repeat(2, 1fr); }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+@media (max-width: 600px) {
+    section { padding: 3.5rem 5%; }
+    
+    /* 1. Navbar horizontal scroll */
+    nav { overflow-x: auto; justify-content: flex-start; padding: 0.8rem; }
+    nav ul { flex-wrap: nowrap; }
+    nav ul li a { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+    nav ul li:not(:last-child)::after { margin: 0 8px; }
+
+    /* 2. Cegah overflow foto & judul */
+    .section-title::after { width: 50% !important; min-width: 150px; }
+    .photo-frame { width: 240px; height: 280px; }
+    .photo-deco { width: 280px; height: 320px; }
+
+    /* 3. PERBAIKAN HOME: Teks & Tombol numpuk rapi ke bawah */
+    .hero-subtitle { flex-direction: column; align-items: center; gap: 0.3rem; }
+    .hero-subtitle .sep { display: none; } /* Hilangkan garis pemisah || */
+    
+    .hero-btns { flex-direction: column; align-items: center; width: 100%; gap: 0.8rem; margin-top: 1rem; }
+    .hero-btns a { width: 100%; max-width: 260px; text-align: center; box-sizing: border-box; }
+
+    /* 4. Grid menyesuaikan layar */
+    .skill-abilities { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .portfolio-images { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skill">Skill</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content fade-up">
+    <h1>Halo,<br>Saya <span>Farell Nandana Tahir</span></h1>
+    <div class="hero-subtitle" >
+      <span>Mahasiswa Sains Data</span>
+      <span class="sep">‖</span>
+      <span>Desainer Kapal Vetradash Veteran Robotics</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">Portofolio</a>
+      <a href="https://drive.google.com/drive/folders/1roXNNAGIiH2_mWEgHik0CP8wZc3TsEDa?usp=sharing" target="_blank" class="btn-outline">Download CV</a>
+      <a href="#contact" class="btn-accent">Contact</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/farellnndn" title="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a2.7 2.7 0 0 0-2.7-2.7c-1.2 0-2 .7-2.3 1.3v-1.1h-2.5v7.8h2.5v-4.1c0-.2 0-.4.1-.6a1.1 1.1 0 0 1 1-0.7c.7 0 1 .5 1 1.3v4.1h2.5M8.1 18.5V10.7H5.6v7.8h2.5M6.9 9.5a1.5 1.5 0 1 0-1.5-1.5 1.5 1.5 0 0 0 1.5 1.5z"/>
+        </svg>
+      </a>
+
+      <a href="https://github.com/farellnndn" title="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.6 4.9.3.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/farellnndn" title="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.6 1.3a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1M12 7a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0 2a3 3 0 1 0 3 3 3 3 0 0 0-3-3z"/>
+        </svg>
+      </a>
+
+      <a href="mailto:farellnndn@gmail.com" title="Email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-photo fade-up">
+    <div class="photo-deco"></div>
+    <div class="photo-frame">
+      <!-- Ganti src dengan foto kamu -->
+      <img src="FOTO PROFIL FARELL.png" alt="Farell Nandana Tahir"/>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title fade-up">Tentang Saya</div>
+  <div class="about-inner fade-up">
+    <p class="about-quote fade-up">"Good data leads to better decisions"</p>
+    <p>Saya merupakan mahasiswa Sains Data dari Universitas Pembangunan Nasional "Veteran" Jawa Timur yang memiliki ketertarikan pada analisis dan visualisasi data. Dalam proses belajar, saya terus memahami bagaimana data dapat diolah menjadi informasi yang bermakna dan digunakan untuk mendukung pengambilan keputusan.</p>
+    <p>Saya memiliki pengalaman dalam melakukan Exploratory Data Analysis (EDA), di mana saya terbiasa mengeksplorasi data untuk menemukan pola, hubungan, serta insight yang dapat memberikan pemahaman lebih dalam terhadap suatu permasalahan.</p>
+    <p>Saya memiliki minat pada penerapan data dalam bidang Finance Data Science dan Medical Data Science, karena kedua bidang tersebut menunjukkan bagaimana data dapat memberikan dampak nyata dalam pengambilan keputusan.</p>
+    <p>Saya memiliki komitmen untuk terus mengembangkan kemampuan di bidang sains data, baik dari sisi teknis maupun analitis, serta beradaptasi dengan perkembangan teknologi yang dinamis.</p>
+  </div>
+</section>
+
+<!-- SKILL -->
+<section id="skill">
+  <div class="section-title fade-up">Skill</div>
+
+  <div class="skill-categories">
+    <!-- Data Science & Dev -->
+    <div class="skill-card skill-cat-wide fade-up">
+      <h3>Data Science &amp; Development</h3>
+      <div class="icon-grid">
+        <div class="icon-item" title="Python">
+          <img src="Python.svg" style="width: 24px; height: 24px;" alt="Python">
+        </div>
+        <div class="icon-item" title="MySQL">
+          <img src="mysql.svg" style="width: 24px; height: 24px;" alt="MySQL">
+        </div>
+        <div class="icon-item" title="Jupyter">
+          <img src="Jupyter.svg" style="width: 24px; height: 24px;" alt="Jupyter">
+        </div>
+        <div class="icon-item" title=" Google Colaboratory">
+          <img src="Google_Colaboratory.svg" style="width: 24px; height: 24px;" alt="Colaboratory">
+        </div>
+        <div class="icon-item" title="VS Code">
+          <img src="Visual_Studio_Code.svg" style="width: 24px; height: 24px;" alt="VS Code">
+        </div>
+        <div class="icon-item" title="DBeaver">
+          <img src="DBeaver.svg" style="width: 24px; height: 24px;" alt="DBeaver">
+        </div>
+        <div class="icon-item" title="Tableau">
+          <img src="tableau.svg" style="width: 24px; height: 24px;" alt="Tableau">
+        </div>
+        <div class="icon-item" title="Power BI">
+          <img src="Power_BI.svg" style="width: 24px; height: 24px;" alt="Power BI">
+        </div>
+      </div>
+    </div>
+
+    <!-- Productivity -->
+    <div class="skill-card fade-up">
+      <h3>Productivity &amp; Utilities</h3>
+      <div class="icon-grid">
+        <div class="icon-item" title="Word">
+          <img src="Microsoft_Office_Word.svg" style="width: 24px; height: 24px;" alt="Word">
+        </div>
+        <div class="icon-item" title="Excel">
+          <img src="Microsoft_Office_Excel.svg" style="width: 24px; height: 24px;" alt="Excel">
+        </div>
+        <div class="icon-item" title="PowerPoint">
+          <img src="Microsoft_Office_PowerPoint.svg" style="width: 24px; height: 24px;" alt="PowerPoint">
+        </div>
+        <div class="icon-item" title="Google Docs">
+          <img src="google-docs.svg" style="width: 24px; height: 24px;" alt="Google Docs">
+        </div>
+        <div class="icon-item" title="Google Sheets">
+          <img src="google-sheets.svg" style="width: 24px; height: 24px;" alt="Google Sheets">
+        </div>
+        <div class="icon-item" title="Google Slides">
+          <img src="google-slides.svg" style="width: 24px; height: 24px;" alt="Google Slides">
+        </div>
+      </div>
+    </div>
+
+    <!-- Engineering -->
+    <div class="skill-card fade-up">
+      <h3>Engineering &amp; Technical Design</h3>
+      <div class="icon-grid">
+        <div class="icon-item" title="AutoCAD">
+          <img src="AUTOCAD.svg" style="width: 24px; height: 24px;" alt="AutoCAD">
+        </div>
+        <div class="icon-item" title="Maxsurf">
+          <img src="MAXSURFT.svg" style="width: 24px; height: 24px;" alt="Maxsurf">
+        </div>
+        <div class="icon-item" title="SolidWorks">
+          <img src="SOLIDWORKS.svg" style="width: 24px; height: 24px;" alt="SolidWorks">
+        </div>
+        <div class="icon-item" title="Adobe XD">
+          <img src="Adobe_XD_CC_icon.svg" style="width: 24px; height: 24px;" alt="Adobe XD">
+        </div>
+        <div class="icon-item" title="Blender">
+          <img src="Blender.svg" style="width: 24px; height: 24px;" alt="Blender">
+        </div>
+        <div class="icon-item" title="Canva">
+          <img src="Canva.svg" style="width: 24px; height: 24px;" alt="Canva">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ability Cards -->
+  <div class="skill-abilities">
+    <div class="ability-card fade-up">
+      <div class="ability-icon">
+        <img src="01_data_science_ml.svg" style="width: 50px; height: 50px;" alt="Data Science & Machine Learning">
+      </div>
+      <h4>Data Science &amp; Machine Learning</h4>
+      <p>Kemampuan memproses raw data, reduksi dimensi (PCA), hingga merancang model prediktif menggunakan algoritma Machine Learning dan Data Mining berbasis Python.</p>
+    </div>
+    <div class="ability-card fade-up">
+      <div class="ability-icon">
+        <img src="02_statistical_analysis.svg" style="width: 50px; height: 50px;" alt="Statistical Analysis & Computational Math">
+      </div>
+      <h4>Statistical Analysis &amp; Computational Math</h4>
+      <p>Keahlian menerapkan metode statistika regresi, analisis multivariat, komputasi numerik, dan aljabar linier untuk menggali insight dan memvalidasi data.</p>
+    </div>
+    <div class="ability-card fade-up">
+      <div class="ability-icon">
+        <img src="03_data_management_cloud.svg" style="width: 50px; height: 50px;" alt="Data Management & Cloud Architecture">
+      </div>
+      <h4>Data Management &amp; Cloud Architecture</h4>
+      <p>Mampu merancang dan mengelola basis data relasional tingkat lanjut (MySQL), serta memahami arsitektur skala besar melalui konsep Big Data dan Komputasi Awan.</p>
+    </div>
+    <div class="ability-card fade-up">
+      <div class="ability-icon">
+        <img src="04_rc_boat_design.svg" style="width: 50px; height: 50px;" alt="RC Boat Design & Engineering">
+      </div>
+      <h4>RC Boat Design &amp; Engineering</h4>
+      <p>Berperan aktif merancang struktur mekanik dan lambung kapal secara presisi untuk Tim Vetradash Batarasena menggunakan SolidWorks, AutoCAD, dan Maxsurf.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERTIFIKAT -->
+<section id="sertifikat">
+  <div class="section-title fade-up">Sertifikat</div>
+  <div class="cert-grid">
+    <div class="cert-item fade-up">
+      <img src="Sertifikat Peserta Pelatihan ROBOCAMP 2025 Farell Nandana Tahir.png" alt="Sertifikat 1"/>
+    </div>
+    <div class="cert-item fade-up">
+      <img src="Sertifikat Peserta Data Science Workshop on Research and Knowledge (DataWork).png" alt="Sertifikat 2"/>
+    </div>
+    <div class="cert-item fade-up">
+      <img src="Sertifikat Peserta Seminar Veteran Robotic Open House 2024 FARELL NANDANA TAHIR.png" alt="Sertifikat 3"/>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-title fade-up">Galeri Portofolio</div>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-title-bar">
+        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+        <h3>Credit Card Customer Segmentation</h3>
+      </div>
+      <div class="portfolio-images">
+        <div class="portfolio-img"><img src="1.png" alt=""/></div>
+        <div class="portfolio-img"><img src="2.png" alt=""/></div>
+        <div class="portfolio-img"><img src="3.png" alt=""/></div>
+      </div>
+    </div>
+
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-title-bar">
+        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+        <h3>EDA &amp; Prediksi Konsumsi Bahan Bakar</h3>
+      </div>
+      <div class="portfolio-images">
+        <div class="portfolio-img"><img src="4.png" alt=""/></div>
+        <div class="portfolio-img"><img src="5.png" alt=""/></div>
+        <div class="portfolio-img"><img src="6.png" alt=""/></div>
+      </div>
+    </div>
+
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-title-bar">
+        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+        <h3>Desain Kapal Indonesia Tim Vetradash Batarasena UPNVJT</h3>
+      </div>
+      <div class="portfolio-images">
+        <div class="portfolio-img"><img src="7.png" alt=""/></div>
+        <div class="portfolio-img"><img src="8.png" alt=""/></div>
+      </div>
+    </div>
+
+    <div class="portfolio-item fade-up">
+      <div class="portfolio-title-bar">
+        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+        <h3>Desain Lomba Camet 2.0 Tim Vetradash Batarasena UPNVJT</h3>
+      </div>
+      <div class="portfolio-images">
+        <div class="portfolio-img"><img src="9.png" alt=""/></div>
+        <div class="portfolio-img"><img src="10.png" alt=""/></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" class="fade-up">
+  <p>Thanks for scrolling! Let's connect.</p>
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/in/farellnndn" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a2.7 2.7 0 0 0-2.7-2.7c-1.2 0-2 .7-2.3 1.3v-1.1h-2.5v7.8h2.5v-4.1c0-.2 0-.4.1-.6a1.1 1.1 0 0 1 1-0.7c.7 0 1 .5 1 1.3v4.1h2.5M8.1 18.5V10.7H5.6v7.8h2.5M6.9 9.5a1.5 1.5 0 1 0-1.5-1.5 1.5 1.5 0 0 0 1.5 1.5z"/>
+      </svg>
+    </a>
+
+    <a href="https://github.com/farellnndn" title="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2A10 10 0 0 0 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.6 4.9.3.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/>
+      </svg>
+    </a>
+
+    <a href="https://www.instagram.com/farellnndn" title="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.6 1.3a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1M12 7a5 5 0 1 1-5 5 5 5 0 0 1 5-5m0 2a3 3 0 1 0 3 3 3 3 0 0 0-3-3z"/>
+      </svg>
+    </a>
+
+    <a href="mailto:farellnndn@gmail.com" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+  </div>
+  <p style="font-size:0.78rem; opacity:0.4;">© 2026 Farell Nandana Tahir. All rights reserved.</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(200,230,245,0.95)'
+      : 'rgba(200,230,245,0.75)';
+  });
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        let id = entry.target.getAttribute('id');
+        
+        // Memaksa bagian sertifikat agar tetap menyalakan menu skill
+        if (id === 'sertifikat') {
+          id = 'skill';
+        }
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(section => {
+    navObserver.observe(section);
+  });
+</script>
+</body>
+</html>
